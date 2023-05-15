@@ -120,9 +120,9 @@ const Header = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="cursor-pointer flex relative max-w-[50px]"
             >
-              {/* <BsFillHandbagFill className="text-black text-2xl" /> */}
-              <img
+             <img
               src={Bag}
+              alt="cartbag"
               className="text-[10px]  w-[30px] h-[30px]"
               />
               <div className="bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
@@ -137,6 +137,7 @@ const Header = () => {
               <Link to="/">
                 <img
                 src={logOut}
+                alt="logout"
                 className="text-[12px] w-[35px] h-[35px]"
                 />
                 <div  className="text-black rounded-full hover:bg-black/20 transition-all duration-200 ml-2 md:ml-4 md:text-2xl" />
