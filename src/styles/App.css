@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+* {
+  padding: 0;
+  margin-top: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+:root {
+  --clr-dark-violet: #011936;
+  --clr-Very-Dark: #161722;
+  --clr-Very-Dark-Desaturated-Blue: #25273c;
+  --clr-Very-Grayish-Blue: #4d5066;
+  --clr-Very-Dark-Grayish-Blue: #393a4c;
+  --clr-verdigris: #48a9a6;
+  --dark-pastel-green: #20bf55;
+  --clr-blue: #0b4f6c;
+  --clr-royal-blue-dark: #03256c;
+  --clr-denim-blue: #2541b2;
+  --clr-blue: #1768ac;
+  --clr-Dark-Blue: #2b3945;
+  --clr-Very-Dark-Blue: #202c37;
+  --clr-Very-Dark-Blue-Light: #111517;
+  --clr-Dark-Grayish-Blue: #323a49;
+  --box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25),
+    -2px -2px 2px rgba(0, 0, 0, 0.25);
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--clr-white);
+}
+
+.logo {
+  mix-blend-mode: color-burn;
+}
+
+.alert-section {
+  text-align: center;
+  position: relative;
+}
+
+ .title-lg{
+  font-family: 'Satisfy', cursive;
+
+  
+}
+
+.alert {
+  background-color: transparent;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s linear;
+  color: #03256c;
+  z-index: -99;
+  opacity: 1;
+  position: absolute;
+  top: 3.5rem;
+  opacity: 0;
+}
+
+.alert-cart {
+  padding: 10px 0;
+  border-left: 7px solid #12bb4a;
+  background-color: white;
+  gap: 0.5rem;
+  padding-left: 16px;
+  padding-right: 16px;
+  transition: all 0.5s ease-in;
+  position: absolute;
+  top: 6.25rem;
+  opacity: 1;
+  z-index: 99;
+}
+
+
+.upin {
+  background-image: url("https://res.cloudinary.com/ddoexoinc/image/upload/v1683955388/surplus-clothing-gc8d462411_1920_by0zs2.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.originalPrize {
+  text-decoration: line-through;
+  font-size: 0.85rem;
+  font-weight: 400;
+  padding-left: 0.3rem;
+}
+
+.cartoriginalPrize {
+  text-decoration: line-through;
+  color: #4d5066;
+  font-weight: 500;
+  margin-left: 7px;
+}
+
+.header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(21px);
+  -webkit-backdrop-filter: blur(21px);
+  padding: 1rem 0;
+}
+
+/* to remove up&down arrow in number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
