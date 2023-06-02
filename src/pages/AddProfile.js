@@ -3,7 +3,7 @@ import { UserAuth } from "../contexts/AuthContext";
 import Loader from "../components/Loader";
 import { FcAddImage } from "react-icons/fc";
 import { MdDelete, MdSaveAlt } from "react-icons/md";
-import { toast } from "react-toastify";
+import { Slide, ToastContainer, toast } from "react-toastify";
 import Tooltip from "react-bootstrap/Tooltip";
 import { OverlayTrigger } from "react-bootstrap";
 import {
@@ -65,6 +65,7 @@ const AddProfile = () => {
       const imageFile = e.target.files[0];
       const storageRef = ref(storage, `Images/${Date.now()}-${imageFile.name}`);
       const uploadTask = uploadBytesResumable(storageRef, imageFile);
+      const toastId = toast.info("Uploading...", { autoClose: false });
 
       uploadTask.on(
         "state_changed",
@@ -72,11 +73,25 @@ const AddProfile = () => {
           const uploadProgress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log(uploadProgress);
-          toast.promise("uploading...Please wait...");
+          if (uploadProgress === 100) {
+            toast.update(toastId, {
+              render: `${uploadProgress.toFixed(0)}% Uploaded`,
+              type: toast.TYPE.SUCCESS,
+              autoClose: false,
+            });
+          } else {
+            // If upload is still in progress, update the toast message with the current progress
+            toast.update(toastId, {
+              render: `${uploadProgress.toFixed(0)}% Uploading...`,
+              type: toast.TYPE.INFO,
+              autoClose: false,
+              closeOnClick: false,
+            });
+          }
         },
         (error) => {
           toast.error(`Error while uploading : Try Again...`);
-        
+          console.log(error);
           setTimeout(() => {
             setIsLoading(false);
           }, 4000);
@@ -85,6 +100,7 @@ const AddProfile = () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setImageAsset(downloadURL);
             setIsLoading(false);
+            toast.dismiss(toastId);
             toast.success("Image uploaded successfully...!");
           });
         }
@@ -116,9 +132,8 @@ const AddProfile = () => {
             address: address,
             userId: user.uid,
           });
-          toast.success("Profile Added Successfully");
+         
         } catch (error) {
-          console.log(error);
         }
       } else {
         try {
@@ -130,19 +145,23 @@ const AddProfile = () => {
             address: address,
             userId: user.uid,
           });
-          toast.success("Profile Updated Successfully");
+        
         } catch (error) {
-          console.log(error);
         }
       }
-      navigate(`/userinfo`);
+      navigate(`/home`);
     } else {
       toast.error("All fields are mandatory to fill");
     }
   };
 
   return (
-    <div className="bg-white w-full h-full flex flex-col min-h-screen justify-center items-center text-black">
+    <div className="bg-white w-full h-full flex flex-col min-h-screen justify-center items-center text-white">
+      <ToastContainer
+        position="top-right"
+        pauseOnHover={false}
+        transition={Slide}
+      />
       <div className="p-6 rounded-lg bg-gray-200 w-[95%] sm:w-[450px]">
         <form onSubmit={saveDetails} className="flex flex-col gap-y-8">
           {isLoading ? (
@@ -158,14 +177,14 @@ const AddProfile = () => {
                       overlay={tooltipRender}
                     >
                       <div className="w-[100px] h-[100px] mx-auto bg-black/60 rounded-full flex items-center justify-center -mt-20 cursor-pointer">
-                        <FcAddImage className="w-[45px] h-[45px]  " />
+                        <FcAddImage className="w-[45px] h-[45px]" />
                       </div>
                     </OverlayTrigger>
                     <input
                       type="file"
                       id="profile"
                       onChange={uploadProfile}
-                      accept="image"
+                      accept="image/*"
                       className="hidden"
                     />
                   </label>
@@ -202,7 +221,7 @@ const AddProfile = () => {
             placeholder="User Name"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            className="py-3 capitalize rounded pl-3 bg-white"
+            className="py-3 capitalize rounded pl-3 bg-slate-700"
             required
           />
           <input
@@ -210,7 +229,7 @@ const AddProfile = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="py-3 rounded pl-3 bg-white"
+            className="py-3 rounded pl-3 bg-slate-700"
             required
           />
           <input
@@ -218,7 +237,7 @@ const AddProfile = () => {
             placeholder="Mobile Number"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="py-3 rounded pl-3 bg-white"
+            className="py-3 rounded pl-3 bg-slate-700"
           />
           <textarea
             type="text"
@@ -226,12 +245,14 @@ const AddProfile = () => {
             value={address}
             rows={3}
             onChange={(e) => setAddress(e.target.value)}
-            className="py-3 rounded pl-3 bg-white"
+            className="py-3 rounded pl-3 bg-slate-700"
           />
           <div>
             <button
               type="submit"
-              className="bg-blue-700  py-2 px-3 rounded-lg font-medium inline-flex justify-centeri items-center gap-x-5 "
+              className={`${
+                isLoading ? "no-pointer" : "pointer"
+              } bg-blue-700 py-2 px-3 rounded-lg font-medium inline-flex gap-x-2 items-center`}
             >
               Save <MdSaveAlt />
             </button>
