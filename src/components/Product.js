@@ -28,6 +28,7 @@ const Product = ({ product }) => {
               <img
                 className="h-full group-hover:scale-110 transition duration-300 p-img"
                 src={image}
+              
                 alt={title}
               />
             </div>

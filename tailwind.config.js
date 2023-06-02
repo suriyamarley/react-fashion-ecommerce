@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "hero-pattern":
-          "url('https://res.cloudinary.com/ddoexoinc/image/upload/v1683629902/store-g599c7eb74_1920_bvmqt5.jpg')",
+          "url('https://res.cloudinary.com/ddoexoinc/image/upload/v1683954904/clothing-ga6f2e86a3_1920_xaln8i.jpg')",
         
       },
     },

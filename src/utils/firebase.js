@@ -4,14 +4,16 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD-PtiS1-hpNDZ6MgZkex2qjzICAv0iIfo",
-  authDomain: "react-shopping-297d4.firebaseapp.com",
-  projectId: "react-shopping-297d4",
-  storageBucket: "react-shopping-297d4.appspot.com",
-  messagingSenderId: "531600221625",
-  appId: "1:531600221625:web:1efd9f000a751d21798268",
-  measurementId: "G-ZWEBGMWRHE"
-};
+  
+    apiKey: "AIzaSyAYlqeHQ10l0pTs3IK83OL8gK5JSbrVLrg",
+    authDomain: "react-fashion-store-365cb.firebaseapp.com",
+    projectId: "react-fashion-store-365cb",
+    storageBucket: "react-fashion-store-365cb.appspot.com",
+    messagingSenderId: "746110171604",
+    appId: "1:746110171604:web:93bf7394f0431c219b3e41",
+    measurementId: "G-7573Y8VWHD"
+  };
+  
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);

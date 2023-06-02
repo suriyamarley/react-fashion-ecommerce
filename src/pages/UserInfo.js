@@ -52,14 +52,14 @@ const UserInfo = () => {
                 <Link to={`/editprofile/${docId}`}>
                   <button
                     type="button"
-                    className="bg-blue-700 inline-flex py-2 px-3 gap-2 rounded-lg hover:bg-blue-800 transition-all duration-200"
+                    className="bg-yellow-400 inline-flex py-2 px-3 gap-2 rounded-lg hover:bg-yellow-600 transition-all duration-200"
                   >
                     Edit <AiFillEdit />
                   </button>
                 </Link>
                 <Link to={"/home"}>
                   <button
-                    className="bg-blue-700 inline-flex py-2 px-3 gap-2 rounded-lg hover:bg-blue-800 transition-all duration-200"
+                    className="bg-yellow-400 inline-flex py-2 px-3 gap-2 rounded-lg hover:bg-yellow-600 transition-all duration-200"
                     type="button"
                   >
                     Done <MdDone />
