@@ -11,10 +11,16 @@ import AddProfile from "./pages/AddProfile";
 import Checkout from "./pages/Checkout";
 import Error from "./pages/Error";
 import OrderSummary from "./pages/OrderSummary";
+import { Slide, ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <div className="overflow-hidden">
+      <ToastContainer
+        position="top-right"
+        pauseOnHover={false}
+        transition={Slide}
+      />
       <Router>
         <Routes>
           <Route path="/" element={<SignIn />} />

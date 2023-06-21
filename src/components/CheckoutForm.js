@@ -114,7 +114,7 @@ const CheckoutForm = () => {
       }
     } else {
       setModalIsOpen(false);
-      toast.error("All fields are mendatory to fill");
+      toast.error("All fields are mandatory to fill");
     }
   };
 

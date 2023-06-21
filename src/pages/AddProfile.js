@@ -132,8 +132,9 @@ const AddProfile = () => {
             address: address,
             userId: user.uid,
           });
-         
+          toast.success("Profile Added Successfully");
         } catch (error) {
+          console.log(error);
         }
       } else {
         try {
@@ -145,24 +146,25 @@ const AddProfile = () => {
             address: address,
             userId: user.uid,
           });
-        
+          toast.success("Profile Updated Successfully", { autoClose: 3000 });
         } catch (error) {
+          console.log(error);
         }
       }
-      navigate(`/home`);
+      navigate(`/userinfo`);
     } else {
       toast.error("All fields are mandatory to fill");
     }
   };
 
   return (
-    <div className="bg-white w-full h-full flex flex-col min-h-screen justify-center items-center text-white">
+    <div className="bg-gray-200 w-full h-full flex flex-col min-h-screen justify-center items-center text-white">
       <ToastContainer
         position="top-right"
         pauseOnHover={false}
         transition={Slide}
       />
-      <div className="p-6 rounded-lg bg-gray-200 w-[95%] sm:w-[450px]">
+      <div className="p-6 rounded-lg bg-slate-900/30 w-[95%] sm:w-[450px]">
         <form onSubmit={saveDetails} className="flex flex-col gap-y-8">
           {isLoading ? (
             <Loader />
@@ -252,7 +254,7 @@ const AddProfile = () => {
               type="submit"
               className={`${
                 isLoading ? "no-pointer" : "pointer"
-              } bg-blue-700 py-2 px-3 rounded-lg font-medium inline-flex gap-x-2 items-center`}
+              } bg-yellow-500 py-2 px-3 rounded-lg font-medium inline-flex gap-x-2 items-center`}
             >
               Save <MdSaveAlt />
             </button>
